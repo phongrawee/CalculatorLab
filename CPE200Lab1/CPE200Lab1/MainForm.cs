@@ -72,7 +72,7 @@ namespace CPE200Lab1
         {
             InitializeComponent();
             engine = new CalculatorEngine();
-
+            memory = 0;
             resetAll();
         }
 
@@ -237,5 +237,35 @@ namespace CPE200Lab1
                 }
             }
         }
+        private double memory;
+        private string operateMemory;
+        private void Memory_Click(object sender, EventArgs e)
+        {
+            operateMemory = ((Button)sender).Text;
+            switch (operateMemory)
+            {
+                case "MS":
+                    memory = Double.Parse(lblDisplay.Text);
+                    break;
+                case "MC":
+                    memory = 0;
+                    break;
+                case "MR":
+                    lblDisplay.Text = Convert.ToString(memory);
+                    break;
+                case "M+":
+
+                    memory += Double.Parse(lblDisplay.Text);
+                    break;
+                case "M-":
+                    memory -= Double.Parse(lblDisplay.Text);
+                    break;
+                default:
+                    break;
+            }
+            Console.WriteLine(operateMemory);
+            Console.WriteLine(memory);
+        }
     }
 }
+
